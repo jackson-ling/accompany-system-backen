@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 父模块需要继承 springboot 依赖-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.11</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!-- 声明需要聚合的子模块 -->
+    <modules>
+        <module>accompany-common</module>
+        <module>accompany-pojo</module>
+        <module>accompany-server</module>
+    </modules>
+
+    <!-- 父模块的声明 -->
+    <groupId>com.accompany</groupId>
+    <artifactId>accompany-system</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <!--父模块的打包方式为 pom（只做依赖管理，不写代码，默认为 jar）-->
+    <packaging>pom</packaging>
+
+
+    <!--依赖版本管理-->
+    <properties>
+        <springboot-starter>3.4.11</springboot-starter>
+    </properties>
+
+    <!--
+        1. 依赖管理
+        2. 注意点
+          （1）这里只是依赖管理，子模块需要使用某个依赖时需要使用 <dependency> 标签声明，
+               且无需指定版本（父模块中统一管理）
+          （2）若子模块需要用到特定的依赖，可以直接指定版本，可以不用父类管理
+    -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${springboot-starter}</version>
+            </dependency>
+
+
+        </dependencies>
+    </dependencyManagement>
+
+</project>
